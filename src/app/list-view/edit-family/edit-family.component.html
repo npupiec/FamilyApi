@@ -1,0 +1,57 @@
+<div class="container" *ngIf="familyItem">
+    <div class="row">
+      <div class="col-sm">
+        <form class="form-container form-family">
+          <div class="form-group" *ngFor="let parent of familyItem.parents">
+            <div class="row">
+                <div class="form-input col-6">
+                  <label for="">Mother name</label>
+                  <input type="text" class="form-input" [(ngModel)]="parent.mother" name="mother">
+                </div>
+                <div class="form-input col-6">
+                  <label for="">Father name</label>
+                  <input type="text" class="form-input" [(ngModel)]="parent.father" name="father">
+                </div>
+            </div>
+            <div class="form-input">
+              <label for="">Surname</label>
+              <input type="text" class="form-input" [(ngModel)]="parent.surname" name="surname">
+            </div>
+          </div>
+          <div class="form-kids border-bottom" *ngFor="let kid of familyItem.kids">
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                    <div class="form-input">
+                      <label for="">Kid name</label>
+                      <input type="text" [(ngModel)]="kid.name" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group col-md-3 select-list">
+                    <select [(ngModel)]="kid.gender" [ngModelOptions]="{standalone: true}">
+                      <option disabled>--- Gender ---</option>
+                      <option value="" [selected]="kid.gender == g" *ngFor="let g of gender"[value]="g">{{ g }} </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <div class="form-input">
+                      <label for="">Birth date</label>
+                      <input type="date" [ngModel]="kid.birth | date:'yyyy-MM-dd'" (ngModelChange)="changeDate($event)" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <div class="form-input">
+                      <label for="">File</label>
+                      <input type="file" (change)="editFile($event)">
+                      <p>{{kid.file}}</p>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <div class="btn-group btn-group-sm col" role="group" aria-label="Actions">
+              <button type="button" class="btn btn-success btn-submit"(click)="updateFamily(familyItem)">Save</button>
+              <button type="button" class="btn btn-danger" (click)="backToFamilyList($event)">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

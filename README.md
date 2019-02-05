@@ -1,10 +1,14 @@
-# FamilyApi
+# Family Api
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.10.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Development json-server
+
+Run `json-server --watch db.json` for a json-server. Navigate to `http://localhost:3000/`.
 
 ## Code scaffolding
 
@@ -12,7 +16,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Running unit tests
 

@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h2>New family</h2>
+        <form class="form-container form-family" [formGroup]="dataForm" novalidate>
+          <div class="form-group" formArrayName="parents" *ngFor="let parent of parents.controls; let i = index">
+            <div class="row">
+                <div class="form-input col-6" [formGroupName]="i">
+                  <label for="">Mother name</label>
+                  <input type="text" class="form-input" formControlName="mother">
+                    <div *ngIf="parent.controls.mother.invalid && 
+                    (parent.controls.mother.dirty || parent.controls.mother.touched)" class="alert alert-danger">
+                      <p *ngIf="parent.controls.mother.errors.required">{{ formErrors.required }}</p>
+                    </div>
+                </div>
+                <div class="form-input col-6" [formGroupName]="i">
+                  <label for="">Father name</label>
+                  <input type="text" class="form-input" formControlName="father">
+                  <div class="errors" *ngIf="parent.controls.father.invalid && parent.controls.father.touched">
+                    <p class="alert alert-danger" *ngIf="parent.controls.father.errors.required">{{formErrors.required}}</p>
+                  </div>
+                </div>
+            </div>
+            <div class="form-input" [formGroupName]="i">
+              <label for="">Surname</label>
+              <input type="text" class="form-input" formControlName="surname">
+              <div class="errors" *ngIf="parent.controls.surname.invalid && parent.controls.surname.touched">
+                <p class="alert alert-danger" *ngIf="parent.controls.surname.errors.required">{{formErrors.required}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-kids border-bottom" formArrayName="kids" *ngFor="let kid of kids.controls; let i = index">
+              <div class="form-row">
+                <div class="form-group col-md-3" [formGroupName]="i">
+                    <div class="form-input">
+                      <label for="">Kid name</label>
+                      <input type="text" formControlName="name">
+                      <div class="errors" *ngIf="kid.controls.name.invalid && kid.controls.name.touched">
+                        <p class="alert alert-danger" *ngIf="kid.controls.name.errors.required">{{formErrors.required}}</p>
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-3 select-list" [formGroupName]="i">
+                    <select formControlName="gender">
+                      <option disabled>--- Gender ---</option>
+                      <option value="" *ngFor="let g of gender" [value]="g">{{ g }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3" [formGroupName]="i">
+                    <div class="form-input">
+                      <label for="">Birth date</label>
+                      <input type="date" formControlName="birth">
+                    </div>
+                    <div class="errors" *ngIf="kid.controls.birth.invalid && kid.controls.birth.touched">
+                      <p class="alert alert-danger" *ngIf="kid.controls.birth.errors.required">{{formErrors.required}}</p>
+                    </div>
+                </div>
+                <div class="form-group col-md-3" [formGroupName]="i">
+                    <div class="form-input">
+                      <label for="">File</label>
+                      <input type="file" formControlName="file" (change)="addFile($event)">
+                    </div>
+                </div>
+              </div>
+              <button class="btn btn-info" (click)="addKid()">Add kid</button>
+          </div>
+          <div class="btn-group btn-group-sm col" role="group" aria-label="Actions">
+            <button class="btn btn-success btn-submit" type="submit" [disabled]="!dataForm.valid" (click)="addFamily($event)">Add new family</button>
+            <button type="button" class="btn btn-danger" (click)="backToFamilyList($event)">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+.select-list {
+    margin-top: 30px;
+}
+
+.form-family {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.form-kids {
+    display: flex;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.btn-info {
+    margin: 10px 0;
+}
+
+select {
+    padding: 3px 0;
+}

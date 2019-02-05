@@ -1,0 +1,42 @@
+<section class="familyList">
+    <div class="container-fluid">
+        <div class="header">
+            <h1>Family List</h1>
+            <button type="button" class="btn btn-info" (click)="isClicked=!isClicked" [routerLink]="['/newFamily']">Add new family</button>
+        </div>  
+        <div class="row list-group-item-primary">
+            <div class="col-1">ID</div>
+            <div class="col-3">Name of mother and father</div>
+            <div class="col-2">Surname</div>
+            <div class="col-4">
+                <div class="row">
+                <div class="col-6">Number of sons</div>
+                <div class="col-6">Number of dauthers</div>
+                </div>
+            </div>
+            <div class="col">Actions</div>
+        </div>
+        <div *ngFor="let family of familyList" appHighlight>
+        <div class="row border">
+            <div class="col-1">{{ family.id }}</div>
+            <div class="col-3" *ngFor= "let parents of family.parents">
+                <p>{{ parents.mother }} i {{ parents.father }}</p>
+            </div>
+            <div class="col-2" *ngFor= "let parents of family.parents">
+                <p>{{ parents.surname }}</p>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-6">{{ family.kids| maleCounter }}</div>
+                    <div class="col-6">{{ family.kids| femaleCounter }}</div>
+                </div>
+            </div>
+            <div class="btn-group btn-group-sm col" role="group" aria-label="Actions">
+                <a [routerLink]="['/family', family.id]" class="btn btn-primary form__link">Edit</a>
+                <button type="button" class="btn btn-danger" (click)="removeItem(family)">Remove</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
