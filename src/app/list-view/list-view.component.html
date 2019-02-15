@@ -16,8 +16,8 @@
             </div>
             <div class="col">Actions</div>
         </div>
-        <div *ngFor="let family of familyList" appHighlight>
-        <div class="row border">
+        <div *ngFor="let family of familyList">
+        <div class="row border"  appHighlight>
             <div class="col-1">{{ family.id }}</div>
             <div class="col-3" *ngFor= "let parents of family.parents">
                 <p>{{ parents.mother }} i {{ parents.father }}</p>

@@ -29,6 +29,11 @@ p {
     align-items: center;
 }
 
+.border:hover {
+    cursor: pointer;
+    transition: .3s;
+}
+
 .btn-info {
     margin: 10px 0;
 }
