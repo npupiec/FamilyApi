@@ -12,6 +12,7 @@
 
 .form-kids {
     display: flex;
+    justify-content: space-between;
 }
 
 .btn {
